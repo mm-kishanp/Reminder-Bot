@@ -1,5 +1,5 @@
 import { DateTime } from "luxon";
-import { Reminder } from "../../src/models/reminder";
+import type { Reminder } from "../../src/models/reminder";
 import { SchedulerService } from "../../src/services/schedulerService";
 
 describe("schedulerService", () => {

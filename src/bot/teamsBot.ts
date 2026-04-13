@@ -1,15 +1,16 @@
-import {
+import type {
   BotFrameworkAdapter,
+  ConversationReference} from "botbuilder";
+import {
   CardFactory,
-  ConversationReference,
   TeamsActivityHandler,
   TurnContext
 } from "botbuilder";
 import { config } from "../config";
-import { Reminder } from "../models/reminder";
-import { MessageHandlers } from "./messageHandlers";
-import { ConversationReferenceService } from "../services/conversationReferenceService";
-import { ReminderDispatcher } from "../services/schedulerService";
+import type { Reminder } from "../models/reminder";
+import type { MessageHandlers } from "./messageHandlers";
+import type { ConversationReferenceService } from "../services/conversationReferenceService";
+import type { ReminderDispatcher } from "../services/schedulerService";
 import { formatInTimezone, timezoneFromLocale } from "../utils/timezone";
 
 export class TeamsReminderBot extends TeamsActivityHandler implements ReminderDispatcher {
@@ -54,7 +55,7 @@ export class TeamsReminderBot extends TeamsActivityHandler implements ReminderDi
       await next();
     });
 
-    this.onInvokeActivity = async (context): Promise<any> => {
+    this.onInvokeActivity = async (context): Promise<{ status: number }> => {
       const value = context.activity.value as {
         action?: "snooze" | "dismiss";
         reminderId?: string;
@@ -96,7 +97,7 @@ export class TeamsReminderBot extends TeamsActivityHandler implements ReminderDi
     await this.sendProactive(refEntity.reference, `Reminder: ${reminder.message}`, card);
   }
 
-  async sendProactive(reference: ConversationReference, text: string, card?: any): Promise<void> {
+  async sendProactive(reference: ConversationReference, text: string, card?: Record<string, unknown>): Promise<void> {
     await this.adapter.continueConversationAsync(config.botAppId, reference, async (turnContext) => {
       if (card) {
         await turnContext.sendActivity({
@@ -110,7 +111,7 @@ export class TeamsReminderBot extends TeamsActivityHandler implements ReminderDi
   }
 }
 
-function buildReminderCard(reminder: Reminder): any {
+function buildReminderCard(reminder: Reminder): Record<string, unknown> {
   return {
     type: "AdaptiveCard",
     version: "1.5",

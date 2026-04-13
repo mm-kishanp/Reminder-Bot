@@ -1,7 +1,8 @@
-import { CosmosClient, Container } from "@azure/cosmos";
-import { ConversationReference } from "botbuilder";
+import type { Container } from "@azure/cosmos";
+import { CosmosClient } from "@azure/cosmos";
+import type { ConversationReference } from "botbuilder";
 import { config } from "../config";
-import { ConversationReferenceEntity } from "../models/user";
+import type { ConversationReferenceEntity } from "../models/user";
 
 export class ConversationReferenceService {
   private readonly container?: Container;

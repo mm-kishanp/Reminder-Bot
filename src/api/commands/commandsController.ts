@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { ReminderService } from "../../services/reminderService";
+import type { ReminderService } from "../../services/reminderService";
 import { parseReminderInput } from "../../utils/nlpParser";
 
 export function createCommandsController(reminderService: ReminderService): Router {
@@ -29,8 +29,9 @@ export function createCommandsController(reminderService: ReminderService): Rout
       });
 
       return res.status(201).json(reminder);
-    } catch (error: any) {
-      return res.status(400).json({ error: error.message });
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Unable to create reminder";
+      return res.status(400).json({ error: message });
     }
   });
 

@@ -1,7 +1,8 @@
-import { CosmosClient, Container } from "@azure/cosmos";
+import type { Container } from "@azure/cosmos";
+import { CosmosClient } from "@azure/cosmos";
 import { config } from "../config";
-import { GraphSubscriptionEntity } from "../models/user";
-import { GraphClientService } from "./graphClient";
+import type { GraphSubscriptionEntity } from "../models/user";
+import type { GraphClientService } from "./graphClient";
 
 export class SubscriptionService {
   private readonly container?: Container;

@@ -1,7 +1,7 @@
 import { DateTime } from "luxon";
 import { RRule } from "rrule";
-import { Reminder } from "../models/reminder";
-import { ReminderService } from "./reminderService";
+import type { Reminder } from "../models/reminder";
+import type { ReminderService } from "./reminderService";
 
 export interface ReminderDispatcher {
   dispatchReminder(reminder: Reminder): Promise<void>;

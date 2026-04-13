@@ -56,7 +56,7 @@ export function buildApp(): { app: express.Express; services: AppServices } {
   scheduler.start();
 
   app.post("/api/messages", (req, res) => {
-    adapter.processActivity(req, res, async (turnContext) => {
+    void adapter.processActivity(req, res, async (turnContext) => {
       await bot.run(turnContext);
     });
   });

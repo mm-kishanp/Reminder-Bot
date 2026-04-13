@@ -1,6 +1,7 @@
 import * as chrono from "chrono-node";
 import { DateTime } from "luxon";
-import { Options, RRule, Weekday } from "rrule";
+import type { Options, Weekday } from "rrule";
+import { RRule } from "rrule";
 
 export interface ParsedReminderInput {
   message: string;

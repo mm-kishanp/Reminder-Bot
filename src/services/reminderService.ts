@@ -1,7 +1,8 @@
-import { CosmosClient, Container } from "@azure/cosmos";
+import type { Container } from "@azure/cosmos";
+import { CosmosClient } from "@azure/cosmos";
 import { v4 as uuidv4 } from "uuid";
 import { config } from "../config";
-import { Reminder, ReminderCreateInput, ReminderUpdateInput } from "../models/reminder";
+import type { Reminder, ReminderCreateInput, ReminderUpdateInput } from "../models/reminder";
 
 export class ReminderService {
   private readonly container?: Container;

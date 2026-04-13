@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { MessageHandlers } from "../../bot/messageHandlers";
+import type { MessageHandlers } from "../../bot/messageHandlers";
 
 export function createActionsController(handlers: MessageHandlers): Router {
   const router = Router();

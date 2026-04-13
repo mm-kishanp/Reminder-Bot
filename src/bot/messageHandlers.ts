@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
-import { Reminder } from "../models/reminder";
-import { ReminderService } from "../services/reminderService";
+import type { Reminder } from "../models/reminder";
+import type { ReminderService } from "../services/reminderService";
 import { parseReminderInput } from "../utils/nlpParser";
 import { formatInTimezone } from "../utils/timezone";
 

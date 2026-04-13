@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { SubscriptionService } from "../../services/subscriptionService";
+import type { SubscriptionService } from "../../services/subscriptionService";
 import { config } from "../../config";
 
 export interface GraphNotification {

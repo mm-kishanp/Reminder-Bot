@@ -1,4 +1,4 @@
-import { ConversationReference } from "botbuilder";
+import type { ConversationReference } from "botbuilder";
 
 export interface UserProfile {
   id: string;
