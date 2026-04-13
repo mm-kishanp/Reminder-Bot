@@ -1,0 +1,49 @@
+{
+  "info": {
+    "name": "Teams Reminder Bot APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create reminder",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/api/reminders",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "reminders"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": \"user-1\",\n  \"conversationReferenceId\": \"user-1:personal\",\n  \"timezone\": \"America/New_York\",\n  \"text\": \"Remind me every Monday at 5 PM to review metrics\"\n}"
+        }
+      }
+    },
+    {
+      "name": "List reminders",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/reminders?userId=user-1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "reminders"],
+          "query": [{ "key": "userId", "value": "user-1" }]
+        }
+      }
+    },
+    {
+      "name": "Graph validation",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "{{baseUrl}}/api/webhooks/graph?validationToken=test-token",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "webhooks", "graph"],
+          "query": [{ "key": "validationToken", "value": "test-token" }]
+        }
+      }
+    }
+  ],
+  "variable": [{ "key": "baseUrl", "value": "http://localhost:3978" }]
+}

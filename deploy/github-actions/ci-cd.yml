@@ -1,0 +1,11 @@
+# Duplicate of .github/workflows/ci-cd.yml for discoverability under /deploy.
+name: CI-CD
+
+on:
+  workflow_dispatch:
+
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Use .github/workflows/ci-cd.yml as the active workflow."

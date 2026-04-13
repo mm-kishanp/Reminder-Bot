@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.16",
+  "version": "1.0.0",
+  "id": "00000000-0000-0000-0000-000000000000",
+  "packageName": "com.contoso.teamsreminderbot",
+  "developer": {
+    "name": "Contoso",
+    "websiteUrl": "https://contoso.com",
+    "privacyUrl": "https://contoso.com/privacy",
+    "termsOfUseUrl": "https://contoso.com/terms"
+  },
+  "name": {
+    "short": "Reminder Bot",
+    "full": "Teams Reminder Bot"
+  },
+  "description": {
+    "short": "Set personal, chat, and channel reminders in Teams.",
+    "full": "Never miss meetings, tasks, or birthdays with one-off and recurring reminders, timezone-aware scheduling, and proactive meeting nudges."
+  },
+  "icons": {
+    "outline": "icons/outline.png",
+    "color": "icons/color.png"
+  },
+  "accentColor": "#2E7D32",
+  "bots": [
+    {
+      "botId": "${{BOT_APP_ID}}",
+      "scopes": ["personal", "team", "groupchat"],
+      "isNotificationOnly": false,
+      "supportsFiles": false,
+      "commandLists": [
+        {
+          "scopes": ["personal", "team", "groupchat"],
+          "commands": [
+            {
+              "title": "remind",
+              "description": "Create one-off or recurring reminders using natural language"
+            },
+            {
+              "title": "list",
+              "description": "View reminders for this personal, chat, or channel context"
+            },
+            {
+              "title": "complete",
+              "description": "Mark a reminder complete by index"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "permissions": ["identity", "messageTeamMembers"],
+  "validDomains": []
+}
